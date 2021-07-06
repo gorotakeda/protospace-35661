@@ -50,7 +50,8 @@ def prototype_params
 end
 
 def move_to_index
-  unless user_signed_in?
+  prototype = Prototype.find(params[:id])
+  if prototype.user_id != current_user.id
     redirect_to action: :index
   end
 end
